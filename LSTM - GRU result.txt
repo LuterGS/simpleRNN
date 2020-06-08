@@ -1,0 +1,26 @@
+1. LSTM Loss:  [1643.8455]  GRU Loss:  [1444.1415]     GRU Win!
+2. LSTM Loss:  [1193.9617]  GRU Loss:  [1349.0857]     LSTM Win!
+3. LSTM Loss:  [1275.86]    GRU Loss:  [1363.9496]     LSTM Win!
+4. LSTM Loss:  [1229.3772]  GRU Loss:  [1607.3727]     LSTM Win!
+5. LSTM Loss:  [1414.7615]  GRU Loss:  [1403.7439]     GRU Win!
+6. LSTM Loss:  [1151.7211]  GRU Loss:  [1159.0322]     LSTM Win!
+7. LSTM Loss:  [1357.156]   GRU Loss:  [1319.2092]     GRU Win!
+8. LSTM Loss:  [2023.667]   GRU Loss:  [1566.2802]     GRU Win!
+9. LSTM Loss:  [1454.1726]  GRU Loss:  [1592.5023]     LSTM Win!
+10.LSTM Loss:  [1218.1708]  GRU Loss:  [1171.1636]     GRU Win!
+
+
+총 LSTM Loss : 13962.6934
+총 GRU  Loss : 13976.4809
+
+LSTM : GRU win ratio = 5 : 5
+
+두개 다 비슷한 수치를 보인다.
+
+따라서, 그냥 LSTM을 사용하기로 결정
+
+
+
+
+
+
