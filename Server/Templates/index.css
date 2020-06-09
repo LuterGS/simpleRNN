@@ -1,0 +1,8 @@
+/* css 초기화 코드 */
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-size: 1em;
+    outline: none;
+}
