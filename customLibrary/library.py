@@ -25,10 +25,9 @@ def ud_percent(prev, cur):
 
 def get_pastdays_as_list(date, pastdays=25, value=[]):
 
-    print(date.date())
     for i in range(pastdays):
-        value.append((date - datetime.timedelta(days=i+1)).strftime("%Y-%m-%d"))
-    print(value)
+        value.append((date - datetime.timedelta(days=i)).strftime("%Y-%m-%d"))
+    return value
 
 
 

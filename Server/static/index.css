@@ -1,0 +1,37 @@
+/* css 초기화 코드 */
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-size: 1em;
+    outline: none;
+}
+
+div{
+}
+
+body{
+    width: 502px;
+    height: 1000px;
+}
+
+#header{
+    width: 500px;
+    height:200px;
+}
+
+#content{
+    width:500px;
+    height:600px;
+}
+
+.value_display{
+    width:500px;
+    height:200px;
+
+}
+
+#footer{
+    width:500px;
+    height:200px;
+}

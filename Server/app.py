@@ -1,14 +1,33 @@
-from flask import Flask, render_template, request, Response
-from flask_cors import CORS, cross_origin
+import datetime
 import os
-from werkzeug.utils import secure_filename
+import threading
+import time
+from flask import Flask, render_template
 
-app = Flask(__name__)
+from Server import WorkAI
 
+folder_path = os.path.dirname(os.path.realpath(__file__))
+app = Flask(__name__, template_folder=folder_path + '/template')
+worker = WorkAI.Worker()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    # return render_template('index.html', test=worker.result)
+    return render_template('index.html', value=worker.result, date=datetime.datetime.now().strftime("%Y년 %m월 %d일"))
+
+
+def webserver():
+    app.run()
+
+def get_data_everyday():
+    while True:
+        # 여기에 외부에서 값을 받아와 DB에 저장하고 예측하는 부분이 구현되어야함
+        cur_time = datetime.datetime.now()
+        if int(cur_time.hour) == 17:
+            worker.work_oneday()
+            time.sleep(3720)
+        time.sleep(300)
+
 
 
 """
@@ -33,6 +52,10 @@ def get_pic():
         return render_template('index.html')
 """
 
-
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    # app.run()
+    web_server = threading.Thread(target=webserver)
+    everyday_loop = threading.Thread(target=get_data_everyday)
+
+    web_server.start()
+    everyday_loop.start()

@@ -30,7 +30,7 @@ def get_data(prev, type="KOSPI"):
         data.append(float(line[col_num]))
     data = normalization_data(data)
 
-    if type != "KOSPI":
+    if type == "KOSPI":
         data.reverse()
 
     total_length = len(data) - prev
@@ -43,8 +43,7 @@ def get_data(prev, type="KOSPI"):
     random.shuffle(temp_data)
 
     for i in range(total_length - 10):
-        answer_data.append(temp_data[i][0])
-        del temp_data[i][0]
+        answer_data.append(temp_data[i].pop())
         input_data.append(np.transpose(np.asarray(temp_data[i]).reshape(1, prev)).tolist())
 
     input_data = np.asarray(input_data)
@@ -67,6 +66,23 @@ def de_normalization_data(data, data_type):
         return data * 690.3 + 902.7
     elif data_type == "CHN":
         return data * 113.71 + 116.21
+
+
+def normalization_db_data(data, data_type="KOSPI"):
+
+    if data_type == "KOSPI":
+        max_min, min = 2129.43, 468.76
+    elif data_type == "USD":
+        max_min, min = 690.3, 982.7
+    else:
+        max_min, min = 113.71, 116.21
+
+    for i in range(len(data)):
+        data[i] = (data[i] - min) / max_min
+    data = np.asarray([np.transpose(np.asarray(data).reshape(1, len(data))).tolist()])
+    print(data.shape)
+    print(data)
+    return data
 
 
 if __name__ == "__main__":
