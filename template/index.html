@@ -8,24 +8,33 @@
 <body>
 
     <div id="header">
-        <p>신경망을 이용한 예측 모델입니다. 오늘 날짜 : {{ date }}</p>
+        <p id="head">신경망을 이용한 예측 모델입니다</p><br>
+        <p>현재 날짜 : {{date}}</p>
+        <p>매일 오후 5시에 다음날의 예측값이 나옵니다</p>
     </div>
 
     <div id="content">
         <div class='value_display' id="KOSPI_display">
-            내일 코스피 예측값은 {{ value[0] }} 입니다.
+            <h2 id="KOSPI_data">내일의 코스피 예측값은...</h2>
+            <h1 id="KOSPI_result">{{value[0]}} 입니다</h1>
+            <img class="background" src="{{ url_for('static', filename='kospi.jpg') }}" width="500" height="200">
         </div>
         <div class='value_display' id="USD_display">
-            내일 달러 환율 예측값은 {{ value[1] }} 입니다.
+            <h2 id="USD_data">내일의 달러 환율은...</h2>
+            <h1 id="USD_result">{{value[1]}} 원입니다</h1>
+            <img class="background" src="{{ url_for('static', filename='usd.jpg') }}" width="500" height="200">
         </div>
         <div class='value_display' id="CHN_display">
-            내일 위안 환율 예측값은 {{ value[2] }} 입니다.
+            <h2 id="CHN_data">내일의 위안 환율은...</h2>
+            <h1 id="CHN_result">{{value[2]}} 원입니다</h1>
+            <img class="background" src="{{ url_for('static', filename='chn.jpg') }}" width="500" height="200">
         </div>
     </div>
 
     <div id="footer">
-        Developed By LuterGS<br>
-        https://github.com/LuterGS
+        <br>Developed By <a href="https://github.com/LuterGS">LuterGS</a>
+        <br>View this Project Github from <a href="https://github.com/LuterGS/simpleRNN">here</a>
+
     </div>
 
 </body>
