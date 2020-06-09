@@ -4,18 +4,24 @@ from werkzeug.utils import secure_filename
 import time
 import threading
 
+from Server import setup
+
 folder_path = os.path.dirname(os.path.realpath(__file__))
-app = Flask(__name__, template_folder=folder_path + '/Templates')
+app = Flask(__name__, template_folder=folder_path + '/template')
+
+worker = setup.Worker()
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    return render_template('index.html', test=[123.456, 2312.43, 21.43])
+    # return render_template('index.html', test=worker.result)
+    return render_template('index.html', test=[123.456, 2312.43, 21.43], date=worker.cur_time.strftime("%Y년 %m월 %d일"))
 
 
 def webserver():
     # 웹서버가 실행되면서 get으로 html을 요청하면 값을 자동으로 받아오게끔 설
     app.run()
+
 
 def get_data_everyday():
     while True:
@@ -44,7 +50,6 @@ def get_pic():
     if request.method == 'GET':
         return render_template('index.html')
 """
-
 
 if __name__ == '__main__':
     # app.run()

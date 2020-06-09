@@ -8,18 +8,19 @@ class Worker:
 
     def __init__(self):
         self.__rnn = [nn.RNN(25, name) for name in self.data_type]
+        self.cur_time = datetime.datetime.now()
 
     def __get_today_prediction(self):
         self.cur_time = datetime.datetime.now()
         for i in range(3):
-            self.__result = [self.__rnn[i].predict_db(sqliteSet.get_db_data(type=self.data_type[i], wishdate=self.cur_time)) for i in range(3)]
+            self.result = [self.__rnn[i].predict_db(sqliteSet.get_db_data(type=self.data_type[i], wishdate=self.cur_time)) for i in range(3)]
 
     def __get_today_value(self):
         # 오늘의 값을 받아오는 부분
         get_today = 0
 
     def __save_prediction(self):
-        sqliteSet.save_prediction_data(self.__result, self.cur_time)
+        sqliteSet.save_prediction_data(self.result, self.cur_time)
 
 
     def work_oneday(self):
