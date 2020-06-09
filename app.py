@@ -4,7 +4,7 @@ import threading
 import time
 from flask import Flask, render_template
 
-from Server import WorkAI
+import WorkAI
 
 folder_path = os.path.dirname(os.path.realpath(__file__))
 app = Flask(__name__, template_folder=folder_path + '/template')

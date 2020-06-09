@@ -7,16 +7,16 @@ filepath = os.path.dirname(os.path.realpath(__file__))[:-2]
 
 
 def get_db_data(type="kospi", wishdate=datetime.datetime.now(), past=25):
-    print(filepath)
+    # print(filepath)
     connection = sqlite3.connect(filepath + "Data/data.db")
     cursor = connection.cursor()
     date_string = library.get_pastdays_as_list(wishdate, pastdays=past * 2)
-    print(date_string)
+    # print(date_string)
     result = []
-    print(type)
+    # print(type)
 
     strs = "select * from " + str(type) + " where date=" + "\'" + date_string[0] + "\'"
-    print(strs)
+    # print(strs)
 
     for i in range(past * 2):
         cursor.execute("select * from " + type + " where date=" + "'" + date_string[i] + "'")
@@ -27,7 +27,7 @@ def get_db_data(type="kospi", wishdate=datetime.datetime.now(), past=25):
             break
     connection.close()
     result.reverse()
-    print(result)
+    # print(result)
     return result
 
 
