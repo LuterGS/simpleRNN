@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 import time
 import threading
 
+folder_path = os.path.dirname(os.path.realpath(__file__))
 app = Flask(__name__, template_folder=folder_path + '/Templates')
 
 
