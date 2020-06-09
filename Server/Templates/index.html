@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>SimplePrediction</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
     <div id="header">
-
+        <p>신경망을 이용한 예측 모델입니다.</p>
     </div>
 
     <div id="content">
-
+        <div class='value_display' id="KOSPI_display">
+            내일 코스피 예측값은 {{ test[0] }} 입니다.
+        </div>
+        <div class='value_display' id="USD_display">
+            내일 달러 환율 예측값은 {{ test[1] }} 입니다.
+        </div>
+        <div class='value_display' id="CHN_display">
+            내일 위안 환율 예측값은 {{ test[2] }} 입니다.
+        </div>
     </div>
 
     <div id="footer">

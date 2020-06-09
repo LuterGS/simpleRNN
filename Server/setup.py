@@ -12,7 +12,7 @@ class Worker:
     def __get_today_prediction(self):
         self.cur_time = datetime.datetime.now()
         for i in range(3):
-            self.__result = [self.__rnn[i].predict_db(sqliteSet.get_db_data(type=self.data_type[i], wishdate=cur_time)) for i in range(3)]
+            self.__result = [self.__rnn[i].predict_db(sqliteSet.get_db_data(type=self.data_type[i], wishdate=self.cur_time)) for i in range(3)]
 
     def __get_today_value(self):
         # 오늘의 값을 받아오는 부분

@@ -1,21 +1,20 @@
 from flask import Flask, render_template, request, Response
-from flask_cors import CORS, cross_origin
 import os
 from werkzeug.utils import secure_filename
 import time
 import threading
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=folder_path + '/Templates')
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    return render_template('index.html', test=[123.456, 2312.43, 21.43])
 
 
 def webserver():
     # 웹서버가 실행되면서 get으로 html을 요청하면 값을 자동으로 받아오게끔 설
-    app.run(host='0.0.0.0', port=80)
+    app.run()
 
 def get_data_everyday():
     while True:
@@ -47,9 +46,9 @@ def get_pic():
 
 
 if __name__ == '__main__':
-
+    # app.run()
     web_server = threading.Thread(target=webserver)
-    everyday_loop = threading.Thread(target=get_data_everyday)
+    # everyday_loop = threading.Thread(target=get_data_everyday)
 
     web_server.start()
-    everyday_loop.start()
+    # everyday_loop.start()
