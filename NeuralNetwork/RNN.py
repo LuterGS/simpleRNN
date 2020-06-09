@@ -35,12 +35,12 @@ class RNN:
         result = self.predict(self.input_data[:test_num])
         result_loss = 0
         for i in range(test_num):
-            print(result[i])
+            # print(result[i])
             result_loss += abs(round(library.de_normalization_data(self.output_data[i], self.type), 4) - result[i])
 
     def predict_db(self, input_data):
         result = self.predict(library.normalization_db_data(input_data, self.type))
-        print(result)
+        # print(result)
         return result
 
 

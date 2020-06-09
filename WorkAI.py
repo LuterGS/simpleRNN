@@ -10,7 +10,8 @@ class Worker:
 
     def __init__(self):
         self.__rnn = [nn.RNN(25, name) for name in self.data_type]
-        self.result = [123.456, 456.789, 789.123]
+        for i in range(3):
+            self.result = [self.__rnn[i].predict_db(sqlite_set.get_db_data(type=self.data_type[i], wishdate=datetime.datetime.now()))[0][0] for i in range(3)]
 
     def __get_today_prediction(self, cur_time):
         self.__get_today_value(cur_time)
