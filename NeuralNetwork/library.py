@@ -54,7 +54,6 @@ def get_data(prev, type="KOSPI"):
 
 def normalization_data(data):
     data = np.asarray(data)
-    # print(data.min(), data.max() - data.min())
     data = (data - data.min()) / (data.max() - data.min())
     return data.tolist()
 
@@ -80,8 +79,6 @@ def normalization_db_data(data, data_type="KOSPI"):
     for i in range(len(data)):
         data[i] = (data[i] - min) / max_min
     data = np.asarray([np.transpose(np.asarray(data).reshape(1, len(data))).tolist()])
-    print(data.shape)
-    # print(data)
     return data
 
 

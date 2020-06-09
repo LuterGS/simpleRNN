@@ -13,6 +13,7 @@ class Worker:
         self.result = [0, 0, 0]
         # for i in range(3):
         #    self.result = [self.__rnn[i].predict_db(sqlite_set.get_db_data(type=self.data_type[i], wishdate=datetime.datetime.now()))[0][0] for i in range(3)]
+        self.cur_time = datetime.datetime.now()
 
     def __get_today_prediction(self, cur_time):
         self.__get_today_value(cur_time)
