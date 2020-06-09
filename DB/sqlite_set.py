@@ -31,6 +31,15 @@ def get_db_data(type="kospi", wishdate=datetime.datetime.now(), past=25):
     return result
 
 
+def save_today_data(cur_time, value, type="kospi"):
+    connection = sqlite3.connect(filepath + "Data/data.db")
+    cursor = connection.cursor()
+    cur_time = cur_time.strftime("%Y-%m-%d")
+    cursor.execute("INSERT INTO " + type + " (date, value) values('" + cur_time + "', '" + str(value) + "');")
+    connection.commit()
+    connection.close()
+
+
 def save_prediction_data(predict_result, cur_time):
     connection = sqlite3.connect(filepath + "Data/data.db")
     cursor = connection.cursor()
