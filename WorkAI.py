@@ -10,9 +10,8 @@ class Worker:
 
     def __init__(self):
         self.__rnn = [nn.RNN(25, name) for name in self.data_type]
-        for i in range(3):
-            self.result = [self.__rnn[i].predict_db(sqlite_set.get_db_data(type=self.data_type[i], wishdate=datetime.datetime.now()))[0][0] for i in range(3)]
         self.cur_time = datetime.datetime.now()
+        self.work_oneday()
 
     def __get_today_prediction(self, cur_time):
         for i in range(3):
@@ -51,5 +50,8 @@ class Worker:
 
 
 if __name__ == "__main__":
-    test = Worker()
-    test.work_oneday()
+    # test = Worker()
+    # test.work_oneday()
+    while True:
+        print(datetime.datetime.now())
+
