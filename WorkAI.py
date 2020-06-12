@@ -16,8 +16,7 @@ class Worker:
 
     def __get_today_prediction(self, cur_time):
         print("Get today prediction")
-        for i in range(3):
-            self.result = [round(self.__rnn[i].predict_db(sqlite_set.get_db_data(type=self.data_type[i], wishdate=cur_time))[0][0], 2) for i in range(3)]
+        self.result = [round(self.__rnn[i].predict_db(sqlite_set.get_db_data(type=self.data_type[i], wishdate=cur_time))[0][0], 2) for i in range(3)]
 
     def __get_today_value(self, cur_time):
         print("Now get today value")
