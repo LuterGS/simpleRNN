@@ -1,6 +1,8 @@
 import tensorflow as tf
 import NeuralNetwork.library as library
-import os, sys
+import os
+import sys
+import DB.sqlite_set as sqlite
 
 if os.path.realpath(__file__) == os.path.abspath(sys.argv[0]):
     from_inside = True
@@ -45,6 +47,8 @@ class RNN:
 
 
 if __name__ == "__main__":
+    test = RNN(25)
+    print(test.predict_db(sqlite.get_db_data()))
 
     """
     kospi = RNN(25, "KOSPI")

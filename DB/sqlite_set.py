@@ -15,13 +15,13 @@ def get_db_data(type="kospi", wishdate=datetime.datetime.now(), past=25):
     result = []
     # print(type)
 
-    strs = "select * from " + str(type) + " where date=" + "\'" + date_string[0] + "\'"
+    # strs = "select * from " + str(type) + " where date=" + "\'" + date_string[0] + "\'"
     # print(strs)
 
     for i in range(past * 2):
         cursor.execute("select * from " + type + " where date=" + "'" + date_string[i] + "'")
         date_data = cursor.fetchall()
-        if date_data != []:
+        if date_data:
             result.append(date_data[0][1])
         if len(result) == past:
             break
@@ -50,4 +50,4 @@ def save_prediction_data(predict_result, cur_time):
 
 
 if __name__ == "__main__":
-    get_db_data()
+    print(get_db_data())
