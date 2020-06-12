@@ -28,6 +28,7 @@ def get_db_data(type="kospi", wishdate=datetime.datetime.now(), past=25):
     connection.close()
     result.reverse()
     # print(result)
+    print("get_db_data complete, result : ", result)
     return result
 
 

@@ -41,7 +41,9 @@ class RNN:
             result_loss += abs(round(library.de_normalization_data(self.output_data[i], self.type), 4) - result[i])
 
     def predict_db(self, input_data):
+        print("Now on predict DB, input data is : ", input_data)
         result = self.predict(library.normalization_db_data(input_data, self.type))
+        print("Now on predict DB, result is : ", result);
         # print(result)
         return result
 

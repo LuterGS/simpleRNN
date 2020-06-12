@@ -13,6 +13,7 @@ worker = WorkAI.Worker()
 @app.route('/')
 def index():
     # return render_template('index.html', test=worker.result)
+    print("One render call : ", worker.result, worker.cur_time.strftime("%Y년 %m월 %d일"))
     return render_template('index.html', value=worker.result, date=worker.cur_time.strftime("%Y년 %m월 %d일"))
 
 
@@ -24,8 +25,13 @@ def get_data_everyday():
         # 여기에 외부에서 값을 받아와 DB에 저장하고 예측하는 부분이 구현되어야함
         cur_time = datetime.datetime.now()
         if int(cur_time.hour) == 17:
+            print("5PM reached, will check next day's prediction")
             worker.work_oneday()
-            worker.cur_time = datetime.datetime.now() + datetime.timedelta(days=1)
+            worker.cur_time = datetime.datetime.now()
+            print("Cur time updated and next day's prediction complete. ")
+            print("cur time : ", worker.cur_time)
+            print("result value : ", worker.result)
+            print("Will sleep for one hour")
             time.sleep(3720)
         time.sleep(300)
 
