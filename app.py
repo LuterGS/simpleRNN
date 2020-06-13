@@ -27,7 +27,7 @@ def get_data_everyday():
         if cur_time.strftime("%H") == "17":
             print("5PM reached, will check next day's prediction")
             worker.work_oneday()
-            worker.cur_time = datetime.datetime.now()
+            worker.cur_time = datetime.datetime.now() + datetime.timedelta(days=1)
             print("Cur time updated and next day's prediction complete. ")
             print("cur time : ", worker.cur_time)
             print("result value : ", worker.result)
