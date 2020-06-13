@@ -11,7 +11,7 @@ class Worker:
 
     def __init__(self):
         self.__rnn = [nn.RNN(25, name) for name in self.data_type]
-        self.cur_time = datetime.datetime.now()
+        self.cur_time = datetime.datetime.now() + datetime.timedelta(days=1)
         self.work_oneday()
 
     def __get_today_prediction(self, cur_time):
