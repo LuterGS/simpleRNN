@@ -24,7 +24,7 @@ def get_data_everyday():
     while True:
         # 여기에 외부에서 값을 받아와 DB에 저장하고 예측하는 부분이 구현되어야함
         cur_time = datetime.datetime.now()
-        if int(cur_time.hour) == 17:
+        if cur_time.strftime("%H") == "17":
             print("5PM reached, will check next day's prediction")
             worker.work_oneday()
             worker.cur_time = datetime.datetime.now()
