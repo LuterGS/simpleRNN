@@ -42,9 +42,8 @@ class RNN:
 
     def predict_db(self, input_data):
         print("Now on predict DB, input data is : ", input_data)
-        input_data = [input_data]
-        result = self.predict(library.normalization_db_data(input_data, self.type))
-        print("Now on predict DB, result is : ", result);
+        result = self.predict([library.normalization_db_data(input_data, self.type)])
+        print("Now on predict DB, result is : ", result)
         # print(result)
         return result
 
