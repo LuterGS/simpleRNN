@@ -31,7 +31,7 @@ class RNN:
         result = self.model.predict(input_data)
         for i in range(len(result[0])):
             result[0][i] = library.de_normalization_data(result[0][i], self.type)
-        return result[0]
+        return result
 
     def test(self, test_num):
         result = self.predict(self.input_data[:test_num])
@@ -42,7 +42,7 @@ class RNN:
 
     def predict_db(self, input_data):
         print("Now on predict DB, input data is : ", input_data)
-        result = self.predict([library.normalization_db_data(input_data, self.type)])
+        result = self.predict(library.normalization_db_data(input_data, self.type))
         print("Now on predict DB, result is : ", result)
         # print(result)
         return result
