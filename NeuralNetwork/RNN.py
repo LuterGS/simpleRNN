@@ -29,9 +29,9 @@ class RNN:
     def predict(self, input_data):
         self.model.load_weights(filepath + "/Data/" + self.type)
         result = self.model.predict(input_data)
-        for i in range(len(result)):
-            result[i] = library.de_normalization_data(result[i], self.type)
-        return result
+        for i in range(len(result[0])):
+            result[0][i] = library.de_normalization_data(result[i], self.type)
+        return result[0]
 
     def test(self, test_num):
         result = self.predict(self.input_data[:test_num])
@@ -42,6 +42,7 @@ class RNN:
 
     def predict_db(self, input_data):
         print("Now on predict DB, input data is : ", input_data)
+        input_data = [input_data]
         result = self.predict(library.normalization_db_data(input_data, self.type))
         print("Now on predict DB, result is : ", result);
         # print(result)
