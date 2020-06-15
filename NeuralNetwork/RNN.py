@@ -30,7 +30,7 @@ class RNN:
         self.model.load_weights(filepath + "/Data/" + self.type)
         result = self.model.predict(input_data)
         for i in range(len(result[0])):
-            result[0][i] = library.de_normalization_data(result[i], self.type)
+            result[0][i] = library.de_normalization_data(result[0][i], self.type)
         return result[0]
 
     def test(self, test_num):
